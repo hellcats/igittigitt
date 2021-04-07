@@ -187,14 +187,17 @@ class IgnoreParser(object):
         full_path
             the full path to the ignore file
         base_dir
-            optional base dir, for testing purposes only.
-            the base dir is the parent of the rule file,
+            optional base dir (str or None).
+            The base dir is the parent of the rule file,
             because rules are relative to the directory
-            were the rule file resides
+            where the rule file resides.
+
+            The base_dir will be used as if the rule_file were
+            located beneath it.
 
         """
         path_rule_file = pathlib.Path(rule_file).resolve()
-        path_base_dir = path_rule_file.parent
+        path_base_dir = base_dir if base_dir is not None else path_rule_file.parent
 
         with open(path_rule_file) as ignore_file:
             counter = 0

@@ -174,9 +174,9 @@ class IgnoreParser(object):
 
         for rule_file in rule_files:
             if not self.match(rule_file):
-                self._parse_rule_file(rule_file)
+                self.parse_rule_file(rule_file)
 
-    def _parse_rule_file(
+    def parse_rule_file(
         self, rule_file: PathLikeOrString, base_dir: Optional[PathLikeOrString] = None,
     ) -> None:
         """
